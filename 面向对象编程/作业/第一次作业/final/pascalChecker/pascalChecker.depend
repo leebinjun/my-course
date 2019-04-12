@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1509086945 source:g:\c++workplace\hw\final\pascalchecker\main.cpp
+	<cstdio>
+	<cstring>
+	<iostream>
+	<fstream>
+	<cstdlib>
+

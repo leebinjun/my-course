@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1509250428 source:g:\c++workplace\hw\knapsack\main.cpp
+	<iostream>
+	<time.h>
+	<stdlib.h>
+	<stdio.h>
+
+1509198830 source:g:\c++workplace\hw\knapsack\main2.cpp
+
