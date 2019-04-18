@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数的使用</title>
+    <script type="text/javascript">
+        //函数定义
+        //1,命名函数
+        //需要调用时才会执行
+        //需要加上function关键字  不需要写返回类型 也不需要形参
+        function add(num1,num2){
+            //在方法中定义的变量  局部变量
+            //可访问范围仅限当前方法中
+            var result = num1+num2;
+            //document.write(result+"<br/>");
+            //需要返回结果，返回结果 不需要就不返回，方法头不需要改动
+            return result;
+        }
+        //2匿名函数，赋予一个变量值，通过变量来调用函数
+        var minus = function (num1,num2){
+            var result = num1-num2;
+            return result;
+        }
+ 
+        //3 使用Function类的构造方法构造匿名函数
+        var mul = new Function("num1","num2","return num1*num2");
+        function test1(){
+            s1 = "newApple";
+        }
+ 
+        var test2 = function(){
+            //如果有局部变量和全部变量同名，
+            //在这个方法中使用的是局部变量
+            //想要使用外部的全局变量，需要加引用 window
+            //直接写的s1是上面的局部变量
+            s1 = "banana";
+ 
+            //局部变量
+            //局部变量不能在函数外使用
+            var s1 = "orange";
+            s1 = "peach";
+        }
+        //在JS中 可以在一个函数中可以再定义一个函数 局部函数
+        function test3(){
+            document.write("test3被调用"+"<br/>");
+            function test4(){
+                document.write("test4被调用"+"<br/>");
+            }
+            //局部函数只能在所定义的函数之内调用
+            test4();
+        }
+ 
+ 
+ 
+        //函数调用
+        //1.直接通过方法名(实参)
+        //add(1,2);
+        document.write(add(1,2)+"<br/>");
+        document.write(minus(8,2)+"<br/>");
+        document.write(mul(8,2)+"<br/>");
+        //2.call方法调用(对象引用，参数1，参数2...)
+        document.write(add.call(window,4,8)+"<br/>")
+        //3.使用apply方法调用函数
+        document.write(add.apply(window,[2,8])+"<br/>");
+ 
+        //全局变量 直接定义的变量
+        //在整个脚本都可以使用
+        var  s1;
+        s1 = "apple";
+        document.write("s1:"+s1+"<br/>")
+        test1();//调用
+        document.write("s1:"+s1+"<br/>")
+        test2();
+        document.write("s1:"+s1+"<br/>")//newApple
+        test3();
+
+        document.write("s1:"+contenUrl+"<br/>")
+
+        var i;
+        for(i = 0;i<5;i++)
+            document.write("s1:"+contenUrl[i]+"<br/>")
+
+
+
+    </script>
+</head>
+<body>
+ 
+</body>
+</html>

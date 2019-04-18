@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+    <head>
+		<!--声明当前页面的编码集:charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="关键词,关键字">
+		<meta name="Description" content="描述信息">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<title>搜索引擎 -  helloworld</title>
+
+		<br>
+		<br>
+		<br>
+		<!--css 样式 化妆 整容  美图-->	
+		<style type="text/css">
+			*{margin:0;}
+			html,body{height:100%;}
+			body{background:url("static/img/1.jpg")center 0;background-size:100% 100%;}
+			/*S box*/
+			.box{width:640px;height:150px;margin:50px auto 0;}
+			/*logo*/
+			.box .logo{width:210px;height:100px;margin:0 auto 20px;background:url("static/img/1.png")center 0;background-size:100% 100%;}
+			/*搜索框*/
+			.box .search{width:640px;height:40px;}
+			.box .search .txt{width:540px;height:38px;border:none;outline:none;font-size:18px;font-family:"方正启体简体";color:#888;text-indent:10px;float:left;}
+			.box .search .btn{width:100px;height:40px;float:right;border:none;outline:none;background:url("static/img/2.png");
+			background-position:-206px 0;font-size:18px;font-family:"微软雅黑";}
+			.box .search .btn:active{box-shadow:0 0 5px #000 inset;font-size:16px;}
+			/*候选框*/
+			.box .search .show{display:none;width:540px;background:#fff;float:left;margin:2px 0;box-shadow:0 0 5px #fff;}
+			.box .search .show div{font-size:16px;font-family:"微软雅黑";text-indent:10px;line-height:28px;}
+			.box .search .show div:hover{background:rgba(0,0,0,0.2);}
+			/*E box*/
+
+		</style>
+
+	</head>
+
+<body>
+
+	
+	<!--S box-->
+	<div class="box">
+		<div class="logo"></div>
+		<div class="search">
+		    <form action="/s" method="get">	
+			<input type="text" class="txt" name="wd" id="txt"/>
+			<input type="submit" class="btn" value="Search">
+		    </form>
+			<div class="show">
+				<!-- <div>11111</div>
+				<div>22222</div>
+				<div>333</div>
+				<div>44444</div>
+				<div>5555</div>
+				<div>6666</div>
+				<div>7777</div>
+				<div>888888</div> -->
+			</div>
+		</div>
+	</div>
+	<!--E box-->
+	<br>
+	<br>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script>
+		$(function(){
+			$(".show").on("click","div",function(){
+				var text = $(this).text();
+				$(".txt").val(text);//给文本框赋值
+				$(".show").fadeOut("solw",function(){
+					$(this).hide();
+					//跳转
+					window.location.href = "/s?wd="+text+"";
+				});
+			});
+			
+		});
+		
+		//当键盘按下抬起来的时候
+		$(".txt").keyup(function(e){
+			var value = $(this).val();
+			
+			//显示
+			$(".show").empty().show();
+			if(!value)return;
+			//alert(value)
+			
+			//alert(0)
+			
+			//ajax请求
+			var txt = $("#txt").val();
+			$.ajax({
+                url: "/key?wd=" +  txt,
+                type: "get",
+                //dataType: "json",
+                //contentType: "application/json; charset=utf-8",
+                //data: "{name:'Varchar32'}",
+                success: function (data) {
+			var arr = eval(data);
+			var html = "";
+					for(var i = 0; i < arr.length; i++){
+						html += "<div>"+arr[i]+"</div>";
+					}
+					$(".show").html(html);
+		},
+            });
+			
+		});
+		
+	
+	</script>
+		
+
+		<head>
+		<style>
+		#header {
+			background-color:black;
+			color:white;
+			text-align:center;
+			padding:5px;
+		}
+		#nav {
+			line-height:30px;
+			height:300px;
+			width:100px;
+			float:left;
+			padding:5px;	      
+		}
+		#section {
+			width:5000px;
+			float:center;
+			padding:100px;	 	 
+		}
+		#footer {
+			background-color:black;
+			color:white;
+			clear:both;
+			text-align:center;
+		   padding:5px;	 	 
+		}
+		</style>
+		</head>
+		
+		<body>
+			
+		<div id="nav">
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		</div>
+
+		<div id="section">
+		<p>
+			<br>
+			<h2 style="font-style:italic">{{ t1 }}</h2>
+			<a href="{{ u1 }}">{{ u1 }}</a>
+			<br><br><br>
+			<h2 style="font-style:italic">{{ t2 }}</h2>
+			<a href="{{ u2 }}">{{ u2 }}</a>
+			<br><br><br>
+			<h2 style="font-style:italic">{{ t3 }}</h2>
+			<a href="{{ u3 }}">{{ u3 }}</a>
+			<br><br><br>
+			<h2 style="font-style:italic">{{ t4 }}</h2>
+			<a href="{{ u4 }}">{{ u4 }}</a>
+			<br><br><br>
+			<h2 style="font-style:italic">{{ t5 }}</h2>
+			<a href="{{ u5 }}">{{ u5 }}</a>
+		</p>
+		</div>
+		
+
+		
+		
+		
+		</body>
+		</html>
+		
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
