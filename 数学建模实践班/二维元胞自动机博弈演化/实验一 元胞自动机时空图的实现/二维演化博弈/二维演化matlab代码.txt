@@ -1,0 +1,11 @@
+load c.txt
+Q=importdata('c.txt');
+m = moviein (100);
+for i = 1:100
+k = 100*i-49;
+n = 100*i;
+b = Q(k:n,1:100);
+imagesc(b);
+m(:,i)=getframe;
+end
+movie2avi(m,'F:\a.avi','compression','none');
